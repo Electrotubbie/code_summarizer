@@ -1,0 +1,4 @@
+tensorflow
+transformers
+torch
+sentencepiece
