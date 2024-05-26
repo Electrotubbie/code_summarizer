@@ -2,3 +2,4 @@ tensorflow
 transformers
 torch
 sentencepiece
+requests
