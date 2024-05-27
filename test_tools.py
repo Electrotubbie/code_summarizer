@@ -33,20 +33,7 @@ def test_israw():
 
 def test_find_all_py():
     dir = './test_directory'
-    result = {
-        'test_directory': {
-            'py': ['code_file.py'],
-            'dir': [{
-                'empty_but_with_pydir': {
-                    'py': [],
-                    'dir': [{
-                        'pydir': {
-                            'py': ['file1.py', 'file2.py'],
-                            'dir': []
-                        }
-                    }]
-                }
-            }]
-        }
-    }
+    result = ['./test_directory/code_file.py',
+              './test_directory/empty_but_with_pydir/pydir/file1.py',
+              './test_directory/empty_but_with_pydir/pydir/file2.py']
     assert find_all_py(dir) == result

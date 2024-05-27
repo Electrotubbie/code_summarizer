@@ -14,6 +14,8 @@ def get_repository_files(repo_url, branch=None, path_to_save=REPO_TO_SUM_PATH):
 
     repo_url: https адрес для клонирования репозитория
     '''
+    if os.path.exists(path_to_save):
+        os.system(f'rm -rf {path_to_save}')
     git.Repo.clone_from(repo_url, path_to_save)
     repo = git.Repo(path_to_save)
     if branch:
@@ -61,32 +63,12 @@ def find_all_py(path):
     path: путь к директории (например '.' или './dir').
 
     Returns:
-    {
-        'dirname1_1': {
-            'dir': [
-                {
-                    'dirname1_2': {
-                        'dir': [{}, {}, ... directory list with py files]
-                        'py': [py files from dirname1_2]
-                    }
-                },
-                {
-                    'dirname1_3': {
-                        'dir': [{}, {}, ... directory list with py files]
-                        'py': [py files from dirname1_3]
-                    }
-                }
-            ]
-            'py': [py files from dirname1_1]
-        }
-    }
+        #TODO
     '''
     # создаём словарь, в который будем копить все наши директории и .py файлы
     py_files = dict()
-    # достаём из пути к директории её имя для удобного сохранения в словарь
-    dir_name = os.path.basename(path)
     # определяем формат словаря
-    py_files[dir_name] = {'py': [], 'dir': []}
+    py_files = list()
     # ищем директории и .py файлы на текущем пути
     dir_list = sorted(os.listdir(path))
     for d in dir_list:
@@ -94,15 +76,15 @@ def find_all_py(path):
         full_path = os.path.join(path, d)
         # если это .py файл, то записываем его в список
         if os.path.isfile(full_path) and d.endswith('.py'):
-            py_files[dir_name]['py'].append(d)
+            py_files.append(full_path)
         # если это директория, то вновь вызываем текущую функцию и проверяем директорию
         elif os.path.isdir(full_path):
             check_dir = find_all_py(full_path)
             if check_dir:
-                py_files[dir_name]['dir'].append(check_dir)
+                py_files.extend(check_dir)
     # если совсем ничего не нашли (ни .py файлы, ни директории с ними), то возвращаем None,
     # иначе словарь с директориями и .py файлами
-    if len(py_files[dir_name]['dir']) != 0 or len(py_files[dir_name]['py']) != 0:
+    if len(py_files) != 0:
         return py_files
     else:
         return None
