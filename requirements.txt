@@ -2,3 +2,5 @@ tensorflow
 transformers
 torch
 sentencepiece
+requests
+GitPython
