@@ -5,7 +5,7 @@ import os
 
 
 REPO_TO_SUM_PATH = './repo2sum'
-
+# в процессе создания web и api нужно проработать более т
 def get_repository_files(repo_url, branch=None, path_to_save=REPO_TO_SUM_PATH):
     '''
     Функция для парсинга всех файлов и директорий с python кодом в репозитории.
@@ -25,7 +25,7 @@ def get_repository_file_code(file_url):
 
     file_url: raw ссылка на файл
     '''
-    if israw(file_url): # проверка корректности ссылки
+    if israw_py(file_url): # проверка корректности ссылки
         try:
             code = requests.get(file_url).text
             return code
@@ -35,7 +35,7 @@ def get_repository_file_code(file_url):
     else:
         return None
 
-def israw(url):
+def israw_py(url):
     '''
     Функция для проверки правильности ссылки на файл в github.
     '''
@@ -81,7 +81,7 @@ def find_all_py(path):
     # достаём из пути к директории её имя для удобного сохранения в словарь
     dir_name = os.path.basename(path)
     # определяем формат словаря
-    py_files[dir_name] = {'dir': [], 'py': []}
+    py_files[dir_name] = {'py': [], 'dir': []}
     # ищем директории и .py файлы на текущем пути
     for d in os.listdir(path):
         # извлекаем полный путь до рассматриваемого файла/папки
