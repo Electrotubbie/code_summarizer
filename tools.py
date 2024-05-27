@@ -88,7 +88,8 @@ def find_all_py(path):
     # определяем формат словаря
     py_files[dir_name] = {'py': [], 'dir': []}
     # ищем директории и .py файлы на текущем пути
-    for d in os.listdir(path):
+    dir_list = sorted(os.listdir(path))
+    for d in dir_list:
         # извлекаем полный путь до рассматриваемого файла/папки
         full_path = os.path.join(path, d)
         # если это .py файл, то записываем его в список
