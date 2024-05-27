@@ -10,3 +10,12 @@ summarize = SummarizationPipeline(
     tokenizer=AutoTokenizer.from_pretrained(hug_repo, skip_special_tokens=True),
     # device=0
 )
+
+
+def get_model_result(code):
+    if isinstance(code, str):
+        return summarize(code)[0]['summary_text']
+    elif isinstance(code, list):
+        return {obj['name']: summarize(obj['code'])[0]['summary_text'] for obj in code}
+    else:
+        assert ValueError(f'{code} is not list or str.')
