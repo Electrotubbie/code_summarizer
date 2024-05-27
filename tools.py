@@ -5,8 +5,10 @@ import os
 
 
 REPO_TO_SUM_PATH = './repo2sum'
-# в процессе создания web и api нужно проработать более т
+
+
 def get_repository_files(repo_url, branch=None, path_to_save=REPO_TO_SUM_PATH):
+    # в процессе создания web и api нужно проработать более корректно эту функцию
     '''
     Функция для парсинга всех файлов и директорий с python кодом в репозитории.
 
@@ -19,13 +21,14 @@ def get_repository_files(repo_url, branch=None, path_to_save=REPO_TO_SUM_PATH):
     py_files = find_all_py(path_to_save)
     return py_files
 
+
 def get_repository_file_code(file_url):
     '''
     Функция для парсинга кода из .py файлов в репозитории.
 
     file_url: raw ссылка на файл
     '''
-    if israw_py(file_url): # проверка корректности ссылки
+    if israw_py(file_url):  # проверка корректности ссылки
         try:
             code = requests.get(file_url).text
             return code
@@ -35,19 +38,21 @@ def get_repository_file_code(file_url):
     else:
         return None
 
+
 def israw_py(url):
     '''
     Функция для проверки правильности ссылки на файл в github.
     '''
     http_pattern = r"http(s)?:\/\/"
     raw_pattern = r"^((http(s)?:\/\/)?raw.githubusercontent.com\/){1}[A-z\S]+(\.py)$"
-    if len(re.findall(http_pattern, url)) == 1: # проверка на повторение https:// только однажды
-        if re.match(raw_pattern, url): # проверка на корректность ссылки на .py файл
+    if len(re.findall(http_pattern, url)) == 1:  # проверка на повторение https:// только однажды
+        if re.match(raw_pattern, url):  # проверка на корректность ссылки на .py файл
             return True
     # assert ValueError('Адрес для чтения файла из github не подходит. '
     #                   '\nНеобходимо, чтоб он начинался с https://raw.githubusercontent.com/. '
     #                   f'\nАдрес: {url} ')
     return False
+
 
 def find_all_py(path):
     '''
@@ -55,7 +60,7 @@ def find_all_py(path):
 
     path: путь к директории (например '.' или './dir').
 
-    Returns: 
+    Returns:
     {
         'dirname1_1': {
             'dir': [
@@ -72,7 +77,7 @@ def find_all_py(path):
                     }
                 }
             ]
-            'py': [py files from dirname1_1] 
+            'py': [py files from dirname1_1]
         }
     }
     '''

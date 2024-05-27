@@ -5,4 +5,5 @@ exclude =
     .ipynb_checkpoints
     .venv
     .gitignore
+    ./test_directory
 max-line-length = 120
