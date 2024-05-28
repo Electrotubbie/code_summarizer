@@ -20,9 +20,9 @@ Summary генерируют 2 модели:
 
 # API
 Для работы api реализованы следующие методы:
-1. POST /summarize - принимает на вход code - непосредственно сам код для summary, gpt - флаг для переключения на YandexGPT (True/False)
-2. POST /summarize/raw_url - принимает на вход url - ссылку на код файла из github (например: https://raw.githubusercontent.com/ ... /file.py), gpt - флаг для переключения на YandexGPT (True/False)
-3. POST /summarize/repository - принимает на вход url - ссылка на репозиторий из github, gpt - флаг для переключения на YandexGPT (True/False)
+1. POST /summarize - принимает на вход code - непосредственно сам код для summary, gpt - флаг для переключения на YandexGPT (True/False). Возвращает summary по переданному методу коду.
+2. POST /summarize/raw_url - принимает на вход url - ссылку на код файла из github (например: https://raw.githubusercontent.com/ ... /file.py), gpt - флаг для переключения на YandexGPT (True/False). Возвращает summary по коду из ссылки.
+3. POST /summarize/repository - принимает на вход url - ссылка на репозиторий из github, gpt - флаг для переключения на YandexGPT (True/False). Возвращает summary по всем python файлам репозитория. 
 
 # Инструкция по развёртыванию приложения и API
 ## Устновка необходимых пакетов
