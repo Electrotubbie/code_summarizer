@@ -33,7 +33,10 @@ def get_repository_file_code(file_url):
     if israw_py(file_url):  # проверка корректности ссылки
         try:
             code = requests.get(file_url).text
-            return code
+            if code != '404: Not Found':
+                return code
+            else:
+                return None
         except Exception as e:
             print(e)
             return None
