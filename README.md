@@ -33,6 +33,12 @@ pip install -r requirements.txt
 ```bash
 streamlit run ./web.py
 ```
+
+## Запуск API
+```bash
+uvicorn api:app
+```
+
 ## Использование Yandex GPT
 Для того, чтобы использовать приложение с Yandex GPT, необходимо получить token и folder_id. Инструкцию по получению данных переменных можно найти в [документации](https://yandex.cloud/ru/docs/foundation-models/api-ref/authentication) к Yandex GPT.
 
