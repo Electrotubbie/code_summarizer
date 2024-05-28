@@ -5,3 +5,4 @@ sentencepiece
 requests
 GitPython
 streamlit
+fastapi
