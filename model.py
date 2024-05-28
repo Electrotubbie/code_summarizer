@@ -18,4 +18,4 @@ def get_model_result(code):
     elif isinstance(code, list):
         return {obj['name']: summarize(obj['code'])[0]['summary_text'] for obj in code}
     else:
-        assert ValueError(f'{code} is not list or str.')
+        raise ValueError(f'{code} is not list or str.')
