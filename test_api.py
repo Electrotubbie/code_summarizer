@@ -11,8 +11,10 @@ repo_url = 'https://github.com/Electrotubbie/UrFU_python_course'
 with open('./test_directory/code_file.py', 'r', encoding='UTF-8') as f:
     code = f.read()
 no_data_error = {'detail': [{'type': 'missing', 'loc': ['body'], 'msg': 'Field required', 'input': None}]}
-none_data_error = {'detail': [{'type': 'string_type', 'loc': ['body', 'url'], 'msg': 'Input should be a valid string', 'input': None}]}
-none_code_error = {'detail': [{'type': 'missing', 'loc': ['body', 'url'], 'msg': 'Field required', 'input': {'code': None}}]}
+none_data_error = {'detail': [{'type': 'string_type', 'loc': ['body', 'url'],
+                               'msg': 'Input should be a valid string', 'input': None}]}
+none_code_error = {'detail': [{'type': 'missing', 'loc': ['body', 'url'],
+                               'msg': 'Field required', 'input': {'code': None}}]}
 
 client = TestClient(app)
 
