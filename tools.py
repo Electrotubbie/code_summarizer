@@ -2,6 +2,8 @@ import re
 import requests
 import git
 import os
+from model import get_model_result
+from yandex_gpt_api import get_ya_gpt_result
 
 
 REPO_TO_SUM_PATH = './repo2sum'
@@ -91,3 +93,17 @@ def find_all_py(path):
         return py_files
     else:
         return None
+
+
+def get_summary_from_filelist(filelist, gpt=False):
+    if gpt:
+        assistent = get_ya_gpt_result
+    else:
+        assistent = get_model_result
+
+    summary = str()
+    for file in filelist:
+        with open(file, 'r', encoding='UTF-8') as f:
+            result = assistent(f.read())
+            summary += f'# {file.split("/")[-1]}\n\n{result}'
+    return summary

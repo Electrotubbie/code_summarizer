@@ -5,6 +5,7 @@ from yandex_gpt_api import get_ya_gpt_result
 from tools import israw_py
 from tools import get_repository_file_code
 from tools import get_repository_files
+from tools import get_summary_from_filelist
 
 
 class Url(BaseModel):
@@ -58,17 +59,9 @@ def summarize_raw_link(data: Url):
 
 @app.post("/summarize/repository")
 def summarize_repo(data: Url):
-    if data.gpt:
-        assistent = get_ya_gpt_result
-    else:
-        assistent = get_model_result
     try:
         files = get_repository_files(data.url)
-        summary = str()
-        for file in files:
-            with open(file, 'r', encoding='UTF-8') as f:
-                result = assistent(f.read())
-                summary += f'# {file.split("/")[-1]}\n\n{result}'
-        return summary
+        summary = get_summary_from_filelist(files, gpt=data.gpt)
+        return {'summary': summary}
     except Exception as e:
         return {'error': f'Возникла ошибка {e}'}
