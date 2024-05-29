@@ -1,0 +1,10 @@
+[flake8]
+exclude = 
+    .git
+    __pycache__
+    .ipynb_checkpoints
+    .venv
+    .gitignore
+    ./test_directory
+    ./repo2sum
+max-line-length = 120

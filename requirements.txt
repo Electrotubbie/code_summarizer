@@ -1,0 +1,8 @@
+tensorflow
+transformers
+torch
+sentencepiece
+requests
+GitPython
+streamlit
+fastapi
