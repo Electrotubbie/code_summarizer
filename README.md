@@ -1,5 +1,6 @@
 # code_summarizer
 Project on the UrFU software engineering course
+Веб-приложение развёрнуто в streamlit cloud https://codesummarizer.streamlit.app/
 
 # Команда
 - Сорокин Андрей Дмитриевич (РИМ-130907)
