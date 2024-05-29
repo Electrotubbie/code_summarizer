@@ -9,7 +9,7 @@ import os
 # TODO
 # 1) Сделать кнопку загрузки в md файл
 # 2) Подумать над переключателем md -> preview
-# 3) протестить всё до конца 
+# 3) протестить всё до конца
 
 st.title("Try to summarize code")
 
@@ -22,7 +22,7 @@ else:
 uploaded_file = st.file_uploader("Загрузите файл с python кодом или")
 
 if uploaded_file:
-    url = st.text_input("Введите raw ссылку на файл из github или ссылку для клонирования целого репозитория", 
+    url = st.text_input("Введите raw ссылку на файл из github или ссылку для клонирования целого репозитория",
                         value=None, disabled=True)
 else:
     url = st.text_input("Введите raw ссылку на файл из github или ссылку для клонирования целого репозитория")

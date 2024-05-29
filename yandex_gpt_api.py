@@ -2,8 +2,10 @@ import requests
 import json
 import os
 
+
 TOKEN = os.getenv('IAM_TOKEN')
 FOLDER_ID = os.getenv('FOLDER_ID')
+
 
 def get_ya_gpt_result(code):
     header = {
