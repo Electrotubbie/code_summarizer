@@ -54,11 +54,13 @@ if st.button("Summarize!"):
             result = assistent(code)
             st.text(f'# {url.split("/")[-1]}\n\n{result}')
         else:
+            summary = str()
             for i, ch in enumerate(chx):
                 if ch:
                     file = filelist[i]
                     with open(file, 'r', encoding='UTF-8') as f:
                         result = assistent(f.read())
-                        st.text(f'# {file.split("/")[-1]}\n\n{result}')
+                        summary += f'# {file.split("/")[-1]}\n\n{result}'
+            st.markdown(summary)
     else:
         st.text('Загрузите файл или введите ссылку')
