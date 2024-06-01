@@ -48,11 +48,11 @@ if st.button("Summarize!"):
         if uploaded_file.name.endswith('.py'):
             code = uploaded_file.read().decode()
             result = assistent(code)
-            st.text(f'# {uploaded_file.name}\n\n{result}')
+            st.markdown(f'# {uploaded_file.name}\n\n{result}')
     elif url:
         if israw_py(url):
             result = assistent(code)
-            st.text(f'# {url.split("/")[-1]}\n\n{result}')
+            st.markdown(f'# {url.split("/")[-1]}\n\n{result}')
         else:
             summary = str()
             for i, ch in enumerate(chx):
